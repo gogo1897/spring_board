@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UsersDAO">
+
+ 	<resultMap type="users" id="usersResult">
+		<id property="id" column="ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="name" column="NAME"/>
+		<result property="role" column="ROLE"/>
+	</resultMap>
+ 
+	<insert id="insert">
+		insert into USERS values (#{id}, #{password}, #{name}, #{role})
+	</insert>
+
+	
+	<delete id="delete">
+		DELETE USERS WHERE no = #{no} AND password = #{password}
+	</delete>
+
+	<select id= "login" resultType="users">
+		select id , password From users where id=#{id} and password=#{password}
+	</select>
+	<update id="update">
+		UPDATE USERS SET CONTENT= #{content} WHERE NO= #{no} and PASSWORD= #{password}
+	</update>
+	
+	<select id="getFindPassword" resultType="users">
+		select id , password FROM users WHERE id =#{id}
+	</select>
+	
+	</mapper>
+	
+	
